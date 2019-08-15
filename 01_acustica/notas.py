@@ -50,15 +50,19 @@ if __name__ == '__main__':
             num_acciones = num_acciones + 1
         
         elif accion == '--duracion' or accion == '-d':
+            if len(sys.argv) < i + 2:
+                raise Exception('Se esperaba otro argumento despues de "%s"' % accion)
             duracion = float(sys.argv[i+1])
             if duracion < duracion_minima or duracion > duracion_maxima:
-                raise ValueError('Duracion invalida: %s (debe estar entre %s y %s)' % (sys.argv[i+1], duracion_minima, duracion_maxima))
+                raise ValueError('Duracion invalida: "%s" (debe estar entre %s y %s)' % (sys.argv[i+1], duracion_minima, duracion_maxima))
             i = i + 1
         
         elif accion == '--amplitud' or accion == '-a':
+            if len(sys.argv) < i + 2:
+                raise Exception('Se esperaba otro argumento despues de "%s"' % accion)
             amplitud = float(sys.argv[i+1])
             if amplitud < amplitud_minima or amplitud > amplitud_maxima:
-                raise ValueError('Amplitud invalida: %s (debe estar entre %s y %s)' % (sys.argv[i+1], amplitud_minima, amplitud_maxima))
+                raise ValueError('Amplitud invalida: "%s" (debe estar entre %s y %s)' % (sys.argv[i+1], amplitud_minima, amplitud_maxima))
             i = i + 1
         
         else:
